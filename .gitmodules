@@ -4,3 +4,6 @@
 [submodule "Lexicalli"]
 	path = Lexicalli
 	url = https://github.com/bfahrenfort/Lexicalli
+[submodule "KirbParse"]
+	path = KirbParse
+	url = https://github.com/bfahrenfort/KirbParse

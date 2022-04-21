@@ -90,3 +90,4 @@ int Kirb_parse_long(int argc, char **argv, int infer, // String to parse
 #endif
 
 #endif //KIRBPARSE_LIBRARY_H
+
