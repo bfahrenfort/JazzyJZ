@@ -4,3 +4,9 @@ tmp/
 lib/
 *.o
 *.a
+*.asm
+*.lex
+*.sym
+lexicalli_temp/
+syntan_blocks_temp/
+jazzy_temp/
