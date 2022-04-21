@@ -130,7 +130,6 @@ int main(int argc, char **argv)
 
   // bin/calli input.jz
   ret = system(lex_command);
-
   if (ret != 0)
   {
     system("rm -rf syntan_blocks_temp");
@@ -140,9 +139,21 @@ int main(int argc, char **argv)
 
   // bin/syntan input_jz.lex input_jz.sym input_jz.asm
   ret = system(syn_command);
-  
+  if (ret != 0)
+  {
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
+    exit(1);
+  }
+
   // nasm -felf64 input_jz.asm -o intermediate.o && ld intermediate.o -o output_name
   ret = system(asm_command);
+  if (ret != 0)
+  {
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
+    exit(1);
+  }
 
   // Get rid of temporary files
   if(!preserve_temporaries)
