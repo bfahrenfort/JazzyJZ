@@ -18,6 +18,15 @@ int main(int argc, char **argv)
 {
   int ret;
 
+  // Setup directory structure
+  ret = system("mkdir -p syntan_blocks_temp");
+  if (ret != 0)
+    exit(1);
+
+  ret = system("mkdir -p jazzy_temp");
+  if (ret != 0)
+    exit(1);
+
   // Parse arguments with my library I developed over winter break
   // Scalable and easy to modify
   FILE *argparse_log = fopen("jazzy_temp/argparse_output.txt", "w");
@@ -54,6 +63,8 @@ int main(int argc, char **argv)
     if (ret == 1)
       std::cout << usage << endl;
     
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     exit(1);
   }
 
@@ -72,30 +83,27 @@ int main(int argc, char **argv)
   if (help)
   {
     std::cout << usage << endl;
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     exit(0);
   }
 
   if (num_anon < 1)
   {
     std::cout << "Jazzy: no input file specified" << endl;
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     exit(1);
   }
   else if (num_anon > 1)
   {
     std::cout << "Jazzy: too many input files" << endl;
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     exit(1);
   }
 
   std::cout << "Jazzy: Starting Compilation" << endl;
-
-  // Setup directory structure
-  ret = system("mkdir -p syntan_blocks_temp");
-  if (ret != 0)
-    exit(1);
-
-  ret = system("mkdir -p jazzy_temp");
-  if (ret != 0)
-    exit(1);
 
   // Create temp file names and commands
   char *lex_output = format_output(input_name, ".lex");
@@ -124,7 +132,11 @@ int main(int argc, char **argv)
   ret = system(lex_command);
 
   if (ret != 0)
+  {
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     exit(1);
+  }
 
   // bin/syntan input_jz.lex input_jz.sym input_jz.asm
   ret = system(syn_command);
@@ -146,6 +158,9 @@ int main(int argc, char **argv)
     char rm_asm[strlen(asm_output) + 7];
     strcpy(rm_asm, "rm -f ");
     strcat(rm_asm, asm_output);
+
+    system("rm -rf syntan_blocks_temp");
+    system("rm -rf jazzy_temp");
     
     system(rm_lexical);
     system(rm_symbol);
