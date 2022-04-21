@@ -68,18 +68,6 @@ int main(int argc, char **argv)
 
   fclose(argparse_log);
 
-  // Get outputs from arg parse
-  if (num_anon < 1)
-  {
-    std::cout << "Jazzy: no input file specified" << endl;
-    exit(1);
-  }
-  else if (num_anon > 1)
-  {
-    std::cout << "Jazzy: too many input files" << endl;
-    exit(1);
-  }
-
   char *input_name = *anon_args[0];
   int preserve_temporaries = flags_out[0];
   int help = flags_out[1];
@@ -96,6 +84,18 @@ int main(int argc, char **argv)
   }
 
   std::cout << "Jazzy: Starting Compilation" << endl;
+
+  // Get outputs from arg parse
+  if (num_anon < 1)
+  {
+    std::cout << "Jazzy: no input file specified" << endl;
+    exit(1);
+  }
+  else if (num_anon > 1)
+  {
+    std::cout << "Jazzy: too many input files" << endl;
+    exit(1);
+  }
 
   // Create temp file names and commands
   char *lex_output = format_output(input_name, ".lex");
