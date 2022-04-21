@@ -1,0 +1,6 @@
+[submodule "Syntan"]
+	path = Syntan
+	url = https://github.com/bfahrenfort/Syntan
+[submodule "Lexicalli"]
+	path = Lexicalli
+	url = https://github.com/bfahrenfort/Lexicalli

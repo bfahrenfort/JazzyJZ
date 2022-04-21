@@ -1,0 +1,6 @@
+bin/
+.vscode/
+tmp/
+lib/
+*.o
+*.a
