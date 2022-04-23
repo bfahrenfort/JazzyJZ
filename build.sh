@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p bin && mkdir -p lib && 
 pushd Lexicalli && ./build.sh && popd && cp Lexicalli/bin/calli bin/calli && 
 pushd Syntan && ./build.sh && popd && cp Syntan/bin/syntan bin/syntan && 
