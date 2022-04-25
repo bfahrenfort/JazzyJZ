@@ -13,8 +13,15 @@ The compiler generates detailed error messages from invalid scans and parses, an
 C and C++ environment: Any modern GCC
 
 Haskell environment: GHC >= 8.10
+
+Assembler: NASM >=2.0
 ## Download and Compilation
-`git clone <repo link> --recursive`
+```
+git clone <repo link> --recursive
+cd JazzyJZ
+chmod +x build.sh
+./build.sh
+```
 ## Use
 `bin/jazzy <source file>.jz [-o <output name>]` 
 
