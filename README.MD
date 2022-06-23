@@ -10,11 +10,14 @@ It supports the modern language concepts of variables, constants, arrays, nested
 The compiler generates detailed error messages from invalid scans and parses, and performs limited semantic analysis to determine symbol correctness. It also performs limited optimization, eliminating symbols in favor of literals where possible, and attempting to minimize temporaries.
 
 ## Dependencies
-C and C++ environment: Any modern GCC
+C and C++ environment: Feature parity with GCC 11
 
-Haskell environment: GHC >= 8.10
+Haskell environment: Feature parity with GHC >= 8.10
 
 Assembler: NASM >=2.0
+
+KirbParse (argument parsing), Lexicalli (lexical analysis), Syntan (syntax analysis): all included as recursive modules
+
 ## Download and Compilation
 ```
 git clone <repo link> --recursive
